@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { FiHome, FiTag, FiBriefcase, FiUsers, FiLogOut } from 'react-icons/fi';
+import { FiHome, FiTag, FiBriefcase, FiUsers, FiLogOut, FiPhone } from 'react-icons/fi';
 
 export default function AdminSidebar() {
   const { logout } = useAuth();
@@ -17,6 +17,7 @@ export default function AdminSidebar() {
     { href: '/admin/business-types', label: 'Business Types', icon: FiTag },
     { href: '/admin/companies', label: 'Companies', icon: FiBriefcase },
     { href: '/admin/clients', label: 'Clients', icon: FiUsers },
+    { href: '/admin/responsible-management', label: 'Responsible Persons', icon: FiPhone}
   ];
 
   return (

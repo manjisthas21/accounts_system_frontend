@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FiTag, FiBriefcase, FiUsers } from 'react-icons/fi';
+import { FiTag, FiBriefcase, FiUsers, FiPhone } from 'react-icons/fi';
 
 export default function AdminDashboard() {
   const menuItems = [
@@ -25,6 +25,13 @@ export default function AdminDashboard() {
       icon: FiUsers,
       href: '/admin/clients',
       color: 'bg-purple-500',
+    },
+    {
+      title: 'Responsible Persons',
+      description: 'Manage responsible persons',
+      icon: FiPhone,
+      href: '/admin/responsible-management',
+      color: 'bg-red-500',
     },
   ];
 
