@@ -8,6 +8,7 @@ interface SchedulerSettings {
   frequency: "daily" | "weekly";
   days_of_week: string[];
   times: string[];
+  report_grouping: "company" | "business_type" | "both";
 }
 
 interface SchedulerSettingsModalProps {
@@ -19,6 +20,7 @@ const defaultSettings: SchedulerSettings = {
   frequency: "weekly",
   days_of_week: ["mon"],
   times: ["09:00"],
+  report_grouping: "both",
 };
 
 const days = [
@@ -55,6 +57,7 @@ export default function SchedulerSettingsModal({
             frequency: data.frequency,
             days_of_week: data.days_of_week || [],
             times: data.times?.length ? data.times : ["09:00"],
+            report_grouping: data.report_grouping || "both",
           });
         }
       } catch (error) {
@@ -226,6 +229,35 @@ export default function SchedulerSettingsModal({
                 <option value="daily">Daily</option>
                 <option value="weekly">Weekly</option>
               </select>
+            </div>
+
+            {/* Outstanding Report Type */}
+            <div>
+              <label className="mb-2 block text-sm font-medium text-gray-700">
+                Outstanding Report Type
+              </label>
+
+              <select
+                value={settings.report_grouping}
+                onChange={(event) =>
+                  setSettings((previous) => ({
+                    ...previous,
+                    report_grouping: event.target.value as
+                    | "company"
+                    | "business_type"
+                    | "both",
+                  }))
+                }
+                className="w-full rounded-lg border px-3 py-2 text-gray-800"
+              >
+                <option value="company">Company-wise</option>
+                <option value="business_type">Business-type-wise</option>
+                <option value="both">Both</option>
+              </select>
+
+              <p className="mt-2 text-xs text-gray-500">
+                Choose whether outstanding reports should be sent by company,business type, or both.
+              </p>
             </div>
 
             {/* Days */}
